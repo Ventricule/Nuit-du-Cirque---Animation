@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'baton';
+    src: url('../font/baton-bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'baton';
+    src: url('../font/baton-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+  background-color: #ddd;
+  font-family: 'baton';
+  font-weight: bold;
+  color: #0e1441;
+  text-transform: uppercase;
+  font-size: 6.667vh;
+  line-height: 1;
+  letter-spacing: 1pt;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+}
+
+#poster {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #ef2c3e;
+  display: flex;
+  flex-direction: column;
+}
+
+#poster .row {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.moon {
+  display: inline-block;
+  width: 5vh;
+  height: 5vh;
+  background: #0e1441;
+  border-radius: 50%;
+  margin: 0 2vh;
+}
+
+#poster .row .spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+#poster .row .spinner .textBox {
+  overflow: hidden;
+  display: inline-block;
+  transition: width 1s, opacity .2s;
+  opacity: 0;
+  color: #8de0c2;
+  vertical-align: bottom;
+}
+
+#poster .row:last-child .spinner .textBox,
+#poster .row:first-child .spinner .textBox {
+  opacity: 1;
+}
+
+#poster .row .spinner .textBox.loading {
+  opacity: 0;
+}
+
+#poster .row .spinner .textBox .text:nth-child(2) {
+  opacity: 0;
+}
+
+.animated-moon {
+    position: fixed;
+    height: 73%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    pointer-events: none;
+}
+
+.animated-moon.secondary {
+  display: none;
+}
+.animated-moon.secondary.left {
+  left: 0;
+}
+.animated-moon.secondary.right {
+  left: 100%;
+}
+
+@media (min-aspect-ratio: 18/10) {
+  .animated-moon.secondary {
+    display: block;
+  }
+}
+@media (min-aspect-ratio: 28/10) {
+  .animated-moon.secondary {
+    display: block;
+  }
+  .animated-moon.secondary.left {
+    transform: translate(0, -50%);
+    left: 6.667vh;
+  }
+  .animated-moon.secondary.right {
+    transform: translate(0, -50%);
+    left: auto;
+    right: 6.667vh;
+  }
+}
